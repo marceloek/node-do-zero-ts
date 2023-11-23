@@ -12,12 +12,6 @@ export async function routes(server: FastifyInstance) {
     return rep.status(200).send({ hello: 'world' })
   })
 
-  server.get('/create-table', async (_, rep) => {
-    await database.createTable()
-
-    return rep
-  })
-
   server.post('/videos', async (req, rep) => {
     const { title, description, duration } = req.body as IVideo
 

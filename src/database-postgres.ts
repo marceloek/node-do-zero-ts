@@ -24,19 +24,6 @@ export class DatabasePostgres {
     await sql`INSERT INTO videos (id, description, title, duration) VALUES (${videoId}, ${description}, ${title}, ${duration} )`
   }
 
-  async createTable(): Promise<void> {
-    await sql`
-      CREATE TABLE accounts (
-        user_id serial PRIMARY KEY,
-        username VARCHAR ( 50 ) UNIQUE NOT NULL,
-        password VARCHAR ( 50 ) NOT NULL,
-        email VARCHAR ( 255 ) UNIQUE NOT NULL,
-        created_on TIMESTAMP NOT NULL,
-        last_login TIMESTAMP
-      );
-    `
-  }
-
   async update(id: string, video: IVideo): Promise<void> {
     const { description, duration, title } = video
 
