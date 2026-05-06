@@ -5,15 +5,11 @@ import { IVideo, IVideoTable } from './types.js'
 
 export class DatabasePostgres {
   async list(search?: string): Promise<IVideoTable[]> {
-    let videos: IVideoTable[] = []
-
     if (search) {
-      videos = await sql`SELECT * FROM videos WHERE title ilike %${search}%`
+      return await sql`SELECT * FROM videos WHERE title ilike %${search}%`
     } else {
-      videos = await sql`SELECT * FROM videos`
+      return await sql`SELECT * FROM videos`
     }
-
-    return videos
   }
 
   async create(video: IVideo): Promise<void> {

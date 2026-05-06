@@ -1,11 +1,11 @@
 import { FastifyInstance } from 'fastify'
 
-// import { DatabaseMemory } from './database-memory.js'
-import { DatabasePostgres } from './database-postgres.js'
+import { DatabaseMemory } from './database-memory.js'
+// import { DatabasePostgres } from './database-postgres.js'
 import { IVideo } from './types.js'
 
 // const database = new DatabaseMemory()
-const database = new DatabasePostgres()
+const database = new DatabaseMemory()
 
 export async function routes(server: FastifyInstance) {
   server.get('/', (_, rep) => {
